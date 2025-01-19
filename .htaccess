@@ -1,0 +1,12 @@
+Options -Indexes
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+
+<Files "./public/">
+    Order deny,allow
+    Deny from all
+</Files>
+

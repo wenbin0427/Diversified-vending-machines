@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" id="darkorlight" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>選擇商品</title>
+    <script src="./js/kit.fontawesome.com_b8ad2c2a06.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="shortcut icon" href="./image/moneypig.ico" type="image/x-icon" />
+    <link rel="manifest" href="./binandsulogo.json">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <style>
+        #cartItemCount{
+            top: 0;
+            right: 0;
+            background-color: red;
+            color: #fff;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+        body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body  style="background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);opacity: 0.8;">
+<nav class="navbar  navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand align-middle" href="#"><img  src="./img/logo.png" width="48" height="48">日常用品</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <form action="./index.php" method="post">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <a class="nav-link" href="#">帳戶設定</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">購買明細</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">交易驗證</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle"  href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    交易設定
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item">付款方式</a></li>
+                    <li><a class="dropdown-item">電子錢包</a></li>
+                </ul>
+                </li>
+            <li class="nav-item ">
+                <a class="nav-link" name="logout" href="#">登出</a>
+            </li>
+        </ul>
+        </form>
+        </div>
+    </div>
+</nav>
+<!-- <img src="./img/logo.png" width="15%" height="15%">日常用品 -->
+<!-- 要分兩個row
+row等於一行一格 -->
+<!-- 2應該用這種 -->
+<div class="container text-center mt-2">
+    <div class="row">
+        <div class="col-6 col-md-4 mt-3">
+            <div id="D1" class="card bg-secondary" style="--bs-bg-opacity: .25;">
+                <div class="card-body">
+                  <img class="button" src="./img/D1.png" width="65%" height="100%">
+                  <div class="text">日常用品1</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 mt-3">
+            <div id="D2" class="card bg-secondary" style="--bs-bg-opacity: .25;">
+                <div class="card-body">
+                  <img src="./img/D2.png" width="65%" height="100%">
+                  <div class="text">日常用品2</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 mt-3">
+            <div id="D3" class="card bg-secondary" style="--bs-bg-opacity: .25;">
+                <div class="card-body">
+                  <img src="./img/D3.png" width="65%" height="100%">
+                  <div class="text">日常用品3</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 mt-3">
+            <div id="D4" class="card bg-secondary" style="--bs-bg-opacity: .25;">
+                <div class="card-body">
+                  <img src="./img/D1.png" width="65%" height="100%">
+                  <div class="text">日常用品4</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 mt-3">
+            <div id="D5" class="card bg-secondary" style="--bs-bg-opacity: .25;">
+                <div class="card-body">
+                  <img src="./img/D2.png" width="65%" height="100%">
+                  <div class="text">日常用品5</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 mt-3">
+            <div id="D6" class="card bg-secondary" style="--bs-bg-opacity: .25;">
+                <div class="card-body">
+                  <img src="./img/D3.png" width="65%" height="50%">
+                  <div class="text">日常用品6</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="d-grid gap-2 col-8 col-md-6 mx-auto mb-5">
+                <button class="btn btn-outline-success" type="button">返回</button>
+                <button class="btn btn-outline-success mt-3" type="button" id="cartButton">購物車
+                    <span id="cartItemCount">0</span>
+                </button>
+            </div>            
+        </div>
+    </div>
+</div>
+<script>
+// ! 購物車處理
+ // 假設初始購物車項目數量為0
+let cartItemCount = 0;
+
+// 獲取購物車按鈕和顯示數字的元素
+const cartItemCountElement = document.getElementById("cartItemCount");
+const D1 = document.getElementById("D1"); //抓取選擇物品的ID
+const D2 = document.getElementById("D2"); //抓取選擇物品的ID
+const D3 = document.getElementById("D3"); //抓取選擇物品的ID
+const D4 = document.getElementById("D4"); //抓取選擇物品的ID
+const D5 = document.getElementById("D5"); //抓取選擇物品的ID
+const D6 = document.getElementById("D6"); //抓取選擇物品的ID
+
+// 更新購物車項目數量的函數
+function updateCartItemCount() {
+  cartItemCountElement.textContent = cartItemCount.toString();
+}
+
+// 按一下增加數字--測試用
+D1.onclick=function(){
+    cartItemCount++;
+    updateCartItemCount();
+}
+D2.onclick=function(){
+    cartItemCount++;
+    updateCartItemCount();
+}
+D3.onclick=function(){
+    cartItemCount++;
+    updateCartItemCount();
+}
+D4.onclick=function(){
+    cartItemCount++;
+    updateCartItemCount();
+}
+D5.onclick=function(){
+    cartItemCount++;
+    updateCartItemCount();
+}
+D6.onclick=function(){
+    cartItemCount++;
+    updateCartItemCount();
+}
+// 假設購物車中添加商品時調用以下函數
+function addItemToCart() {
+  cartItemCount++;
+  updateCartItemCount();
+}
+
+// 假設購物車中移除商品時調用以下函數
+function removeItemFromCart() {
+  if (cartItemCount > 0) {
+    cartItemCount--;
+    updateCartItemCount();
+  }
+}
+
+// 初始化
+updateCartItemCount();
+</script>
+
+</body>
+</html>
+

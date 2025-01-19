@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit Form with Ajax</title>
+<script src="./js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<form id="myForm">
+    <input type="text" name="data1" placeholder="Data 1">
+    <input type="text" name="data2" placeholder="Data 2">
+    <button type="button" id="submitButton">Submit</button>
+</form>
+
+<script>
+$(document).ready(function(){
+    $("#submitButton").click(function(){
+        var formData = $("#myForm").serialize(); // 將表單數據序列化為字符串
+        $.ajax({
+            type: "POST",
+            url: "./backend.php", // 指定後端處理的腳本文件
+            data: formData,
+            success: function(response){
+                alert(response); // 在成功時顯示後端返回的消息
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

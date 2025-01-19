@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/kit.fontawesome.com_b8ad2c2a06.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/anaition.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center mt-3" id="viewtext">尚未運作</h1>
+                <form id="runbt">
+                    <button type="button" class="btn btn-primary w-100" id="check">啟動</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+        $('#check').click(function(){
+            $.ajax({
+                type: "POST",
+                url: "./run.php",
+                success: function(response) {
+                    $('#viewtext').text(response);
+                },
+                error: function(xhr, status, error) {
+                    $('#viewtext').text(error);
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

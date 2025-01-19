@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>左側導航欄</title>
+    <script src="../js/kit.fontawesome.com_b8ad2c2a06.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="https://registry.npmmirror.com/echarts/5.5.0/files/dist/echarts.min.js"></script>
+    <style>
+        /* 電腦畫面下的樣式 */
+        @media screen and (min-width: 992px) {
+          .nav-pills {
+            height: 100vh; /* 高度佔滿整個畫面 */
+            width: 300px; /* 寬度設定為300px */
+          }
+        }
+
+        /* 手機螢幕下的樣式 */
+        @media screen and (max-width: 991px) {
+          .nav-pills,.cont {
+            width: 100%; /* 寬度設定為100% */            
+          }
+        }
+        
+      </style>
+
+  </head>
+<body>
+<div class="d-flex bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border cont">
+        <div class="container-fluid ">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="menu navbar-nav nav flex-column nav-pills border">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="./member_admin.php">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./index.php">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- 右側內容 -->
+      <div class="rightcontainer" >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda rem modi eius, ex fuga ea sed excepturi atque in ipsum culpa rerum error beatae sapiente. Illum, soluta! Et, reprehenderit magni!
+        </div>
+    </div>
+<script>
+   $(function () {
+   $(".menu>a").click(function (e) {
+     $(".menu>a.selected").removeClass();
+     $(".rightcontainer").load($(this).addClass("selected").attr("href"));
+     e.preventDefault();
+   }).first().click();
+ });
+</script>
+</body>
+</html>

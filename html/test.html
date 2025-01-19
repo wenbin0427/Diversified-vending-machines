@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Stepper Motor</title>
+</head>
+<body>
+    <h1>Control Stepper Motor</h1>
+    <button onclick="startMotor()">Start Motor</button>
+
+    <script>
+        function startMotor() {
+            fetch('/startMotor') // 向服务器发送请求
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Motor started.'); // 如果请求成功，打印消息
+                    } else {
+                        console.error('Failed to start motor.'); // 如果请求失败，打印错误消息
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error); // 如果发生错误，打印错误消息
+                });
+        }
+    </script>
+</body>
+</html>

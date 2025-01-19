@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" id="darkorlight" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food_Map</title>
+    <script src="./js/kit.fontawesome.com_b8ad2c2a06.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwR2iRA35zIv-mCHC0IgNSI8qyFG8QBk8&callback=initMap"></script>
+    <style>
+        #map{
+            height: 100%;
+            width: 100%;
+            padding: 40%;
+        }
+        body,html{
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        .view{
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <form action="./buy" method="POST">
+        <nav class="navbar  navbar-expand-lg shadow p-1 bg-body rounded">
+            <div class="container-fluid">
+                <a class="navbar-brand align-middle" href="./choose"><img  src="./img/logo.png" width="48" height="48">IVM多元化販賣機</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                        <a class="nav-link" href="./choose">主選單</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="account_setting">帳戶設定</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="./Purchase details">購買明細</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="./Pay" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            付款設定
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./AddPay">新增信用卡</a></li>
+                            <li><a class="dropdown-item" href="./PayManager">信用卡管理</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="./Fetch">交易驗證</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="./learnmone">隱私權政策</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                        <li class="nav-item ">
+                            <button type="submit" class="nav-link" name="logout" onclick="logout()" value="登出">登出</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </form>
+    <!-- AIzaSyCwR2iRA35zIv-mCHC0IgNSI8qyFG8QBk8 -->
+    <div class="container mt-3">
+        <div class="row gx-5">
+            <div class="d-flex flex-column flex-md-row">
+                <div class="col-12 col-md-4">
+                    <button id="block" class="btn btn-primary w-100 mt-3">黑</button>
+                    <button class="btn btn-primary w-100 mt-3">BBB</button>
+                    <button class="btn btn-primary w-100 mt-3">CCC</button>
+                    <button class="btn btn-primary w-100 mt-3">DDD</button>
+                    <button class="btn btn-primary w-100 mt-3">EEE</button>
+                    <button class="btn btn-primary w-100 mt-3">FFF</button>
+
+                </div>
+                <div id="view" class="col-12 col-md-8 px-2 mt-3">
+                    <div  class="view card">
+                        <div class="card-body">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+ 
+let map;
+
+async function initMap() {
+  //@ts-ignore
+  const { Map } = await google.maps.importLibrary("maps");
+
+  map = new Map(document.getElementById("map"), {
+    center: { lat: 23.039388, lng: 120.239335 },
+    zoom: 15,
+  });
+}
+initMap();
+// 23.039147,120.2407308,17.47z
+
+
+</script>
+</body>
+</html>
+
